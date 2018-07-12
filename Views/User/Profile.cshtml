@@ -1,0 +1,23 @@
+@model mvc_user_profile.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Profile</h2>
+
+<p>Username: @Model.Username</p>
+<p>Email: @Model.Email</p>
+<p>First Name: @Model.FirstName</p>
+<p>Last Name: @Model.LastName</p>
+
+@section Scripts {
+     <script lang="javascript">
+        jQuery(document).ready(function(){
+            var jwtString = localStorage.getItem("jwt");
+            if (typeof jwtString == 'undefined' || jwtString == null) {
+                localStorage.setItem("jwt", "@Model.Token")
+            }
+        });
+    </script>
+}
